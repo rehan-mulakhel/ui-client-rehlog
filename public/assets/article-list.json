@@ -1,18 +1,18 @@
 [
   {
-    "id": 1,
+    "slug": 1,
     "name": "La programmation fonctionnelle"
   },
   {
-    "id": 2,
+    "slug": 2,
     "name": "Les fonctions récursives"
   },
   {
-    "id": 3,
+    "slug": 3,
     "name": "Les types de systèmes d'exploitation"
   },
   {
-    "id": 4,
+    "slug": 4,
     "name": "L'IA peut-elle être consciente ?"
   }
 ]

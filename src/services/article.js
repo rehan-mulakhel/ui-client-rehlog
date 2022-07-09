@@ -4,8 +4,8 @@ export const articleApi = createApi({
   reducerPath: 'articleApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/assets/' }),
   endpoints: (builder) => ({
-    getArticleById: builder.query({
-      query: (id) => `article-${id}.json`,
+    getArticleBySlug: builder.query({
+      query: (slug) => `article-${slug}.json`,
     }),
     getArticles: builder.query({
       query: () => 'article-list.json',
@@ -13,4 +13,4 @@ export const articleApi = createApi({
   }),
 });
 
-export const { useGetArticleByIdQuery, useGetArticlesQuery } = articleApi;
+export const { useGetArticleBySlugQuery, useGetArticlesQuery } = articleApi;

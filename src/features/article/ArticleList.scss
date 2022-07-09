@@ -1,11 +1,13 @@
 #article-list {
   ul {
-    li {
-      cursor: pointer;
-      margin: 10px;
-      &:hover {
-        background-color: #eee;
-      }
-    }
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    padding: 10px;
+  }
+  a {
+    text-decoration: none;
   }
 }
