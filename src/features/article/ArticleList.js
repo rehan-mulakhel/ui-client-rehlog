@@ -1,5 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import { Link, NavLink } from 'react-router-dom';
 import { useGetAllQuery } from '../../services/article';
 import './ArticleList.scss';
 
@@ -14,6 +15,11 @@ export const ArticleList = () => {
         <>Loading...</>
       ) : data ? (
         <ul>
+          <li>
+            <Link to="/create">
+              <Button variant="primary">Create new article</Button>
+            </Link>
+          </li>
           {data.map((article, i) => {
             return (
               <li key={i}>

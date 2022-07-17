@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import './App.scss';
+import { ArticleCreate } from './features/article/ArticleCreate';
 import { ArticleList } from './features/article/ArticleList';
 import { ArticleView } from './features/article/ArticleView';
 import { Homepage } from './features/home/Homepage';
@@ -30,6 +31,7 @@ const App = () => {
               <main>
                 <Routes>
                   <Route path="/" element={<Homepage />} />
+                  <Route path="/create" element={<ArticleCreate />} />
                   <Route path=":slug" element={<ArticleView />} />
                 </Routes>
               </main>
