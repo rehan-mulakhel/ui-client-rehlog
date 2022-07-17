@@ -1,11 +1,11 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useGetArticleBySlugQuery } from '../../services/article';
+import { useGetArticleQuery } from '../../services/article';
 import './ArticleView.scss';
 
 export const ArticleView = () => {
   const params = useParams();
-  const { data, error, isLoading } = useGetArticleBySlugQuery(params.slug);
+  const { data, error, isLoading } = useGetArticleQuery(params.slug);
 
   return (
     <div id="article-list">

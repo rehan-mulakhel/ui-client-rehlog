@@ -2,15 +2,15 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const articleApi = createApi({
   reducerPath: 'articleApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/assets/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_BASE_URL }),
   endpoints: (builder) => ({
-    getArticleBySlug: builder.query({
-      query: (slug) => `article-${slug}.json`,
+    getAll: builder.query({
+      query: () => '/articles/list',
     }),
-    getArticles: builder.query({
-      query: () => 'article-list.json',
+    getArticle: builder.query({
+      query: (id) => `articles/${id}`,
     }),
   }),
 });
 
-export const { useGetArticleBySlugQuery, useGetArticlesQuery } = articleApi;
+export const { useGetArticleQuery, useGetAllQuery } = articleApi;

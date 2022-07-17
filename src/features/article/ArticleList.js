@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useGetArticlesQuery } from '../../services/article';
+import { useGetAllQuery } from '../../services/article';
 import './ArticleList.scss';
 
 export const ArticleList = () => {
-  const { data, error, isLoading } = useGetArticlesQuery();
+  const { data, error, isLoading } = useGetAllQuery();
 
   return (
     <div id="article-list">
@@ -18,7 +18,7 @@ export const ArticleList = () => {
             return (
               <li key={i}>
                 <NavLink
-                  to={`/${article.slug}`}
+                  to={`/${article.aid}`}
                   style={({ isActive }) => ({
                     borderLeft: isActive ? '8px solid #000' : '8px solid #fff',
                   })}
