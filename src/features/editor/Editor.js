@@ -1,30 +1,25 @@
-import React, { useCallback } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import CodeMirror from '@uiw/react-codemirror';
 import { EditorView } from '@codemirror/view';
 import { markdown, markdownLanguage } from '@codemirror/lang-markdown';
 import { languages } from '@codemirror/language-data';
 import './Editor.scss';
 
-export const Editor = () => {
-  const initValue = ''
-    .concat('---\n')
-    .concat('Titre: \n')
-    .concat('Description: \n')
-    .concat('---\n')
-    .concat('Il était une fois');
-
-  const onChange = useCallback((value) => {
-    console.log(value);
-  }, []);
-
+export const Editor = (props) => {
   return (
     <CodeMirror
-      value={initValue}
+      value={props.initValue}
       extensions={[
         EditorView.lineWrapping,
         markdown({ base: markdownLanguage, codeLanguages: languages }),
       ]}
-      onChange={onChange}
+      onChange={props.onChange}
     />
   );
+};
+
+Editor.propTypes = {
+  initValue: PropTypes.string,
+  onChange: PropTypes.func,
 };

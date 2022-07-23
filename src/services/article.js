@@ -4,6 +4,16 @@ export const articleApi = createApi({
   reducerPath: 'articleApi',
   baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_BASE_URL }),
   endpoints: (builder) => ({
+    createArticle: builder.mutation({
+      query: (form) => ({
+        url: '/articles/create',
+        method: 'POST',
+        body: form,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      }),
+    }),
     getAll: builder.query({
       query: () => '/articles/list',
     }),
@@ -13,4 +23,5 @@ export const articleApi = createApi({
   }),
 });
 
-export const { useGetArticleQuery, useGetAllQuery } = articleApi;
+export const { useCreateArticleMutation, useGetArticleQuery, useGetAllQuery } =
+  articleApi;
