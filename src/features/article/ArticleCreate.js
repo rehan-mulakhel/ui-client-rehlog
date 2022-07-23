@@ -11,8 +11,9 @@ export const ArticleCreate = () => {
   const navigate = useNavigate();
   const initValue = ''
     .concat('---\n')
-    .concat('Titre: \n')
-    .concat('Description: \n')
+    .concat('public: true\n')
+    .concat('name: \n')
+    .concat('description: \n')
     .concat('---\n')
     .concat('Il était une fois');
 
