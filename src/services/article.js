@@ -14,14 +14,32 @@ export const articleApi = createApi({
         },
       }),
     }),
+    editArticle: builder.mutation({
+      query: ({ id, form }) => ({
+        url: `/articles/${id}/edit`,
+        method: 'POST',
+        body: form,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      }),
+    }),
     getAll: builder.query({
       query: () => '/articles/list',
     }),
     getArticle: builder.query({
       query: (id) => `articles/${id}`,
     }),
+    getArticleEdit: builder.query({
+      query: (id) => `articles/${id}/edit`,
+    }),
   }),
 });
 
-export const { useCreateArticleMutation, useGetArticleQuery, useGetAllQuery } =
-  articleApi;
+export const {
+  useCreateArticleMutation,
+  useEditArticleMutation,
+  useGetArticleQuery,
+  useGetArticleEditQuery,
+  useGetAllQuery,
+} = articleApi;
