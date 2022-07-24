@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 import './ArticleCreate.scss';
 import { useCreateArticleMutation } from '../../services/article';
 import { Editor } from '../editor/Editor';
@@ -32,9 +33,18 @@ export const ArticleCreate = () => {
       <Editor initValue={initValue} onChange={setContent} />
       <center>
         <Button variant="primary" onClick={onSave}>
-          Save
+          {!isLoading ? (
+            <>Save</>
+          ) : (
+            <Spinner
+              as="span"
+              animation="grow"
+              size="sm"
+              role="status"
+              aria-hidden="true"
+            />
+          )}
         </Button>
-        {isLoading ? 'Loading' : 'Not Loading'}
       </center>
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 import {
   useEditArticleMutation,
   useGetArticleEditQuery,
@@ -11,6 +12,7 @@ import { Editor } from '../editor/Editor';
 export const ArticleEdit = () => {
   const params = useParams();
   const [content, setContent] = useState(null);
+  const [reason, setReason] = useState(null);
   const {
     data,
     error: initValueError,
@@ -19,19 +21,21 @@ export const ArticleEdit = () => {
   const [editArticle, { isLoading }] = useEditArticleMutation();
   const navigate = useNavigate();
 
+  const onReasonChange = (event) => {
+    setReason(event.target.value);
+  };
+
   const onSave = async () => {
-    if (content == null) {
+    if (content == null || reason == null) {
       return;
     }
     const form = new URLSearchParams({
       content: content,
       ordinal: data.ordinal,
-      reason: 'To be done',
+      reason: reason,
     });
     await editArticle({ id: params.slug, form: form });
-    if (content == 'fdsfsf') {
-      navigate(`/${params.slug}`);
-    }
+    navigate(`/${params.slug}`);
   };
 
   return (
@@ -44,10 +48,26 @@ export const ArticleEdit = () => {
         <>
           <Editor initValue={data.markdown} onChange={setContent} />
           <center>
-            <Button variant="primary" onClick={onSave}>
-              Save
-            </Button>
-            {isLoading ? 'Loading' : 'Not Loading'}
+            <hr />
+            <p>
+              Reason:
+              <br />
+              <textarea onChange={onReasonChange}></textarea>
+              <br />
+              <Button variant="primary" onClick={onSave}>
+                {!isLoading ? (
+                  <>Save</>
+                ) : (
+                  <Spinner
+                    as="span"
+                    animation="grow"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                  />
+                )}
+              </Button>
+            </p>
           </center>
         </>
       )}
