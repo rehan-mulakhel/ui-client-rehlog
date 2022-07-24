@@ -43,7 +43,7 @@ export const ArticleView = () => {
           <aside>
             <hr />
             <h2>Autres articles</h2>
-            <ArticleList />
+            <ArticleList currentAid={params.slug} />
           </aside>
         </>
       ) : null}
