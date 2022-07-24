@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 import { marked } from 'marked';
+import { ArticleList } from './ArticleList';
 import { useGetArticleQuery } from '../../services/article';
 import './ArticleView.scss';
 
@@ -26,6 +27,11 @@ export const ArticleView = () => {
         <>
           <h1>{data.name}</h1>
           <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+          <aside>
+            <hr />
+            <h2>Autres articles</h2>
+            <ArticleList />
+          </aside>
         </>
       ) : null}
     </div>

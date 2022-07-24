@@ -2,16 +2,17 @@
 
 .App {
   margin: auto;
-  width: 960px;
+  max-width: 960px;
+  padding: 10px;
 }
 
 #main-header {
   border-bottom: 1px solid black;
-  font-size: 3em;
   text-align: center;
 
   a {
     color: #333;
+    font-size: 3em;
     text-decoration: none;
 
     &:hover {

@@ -6,7 +6,6 @@ import Row from 'react-bootstrap/Row';
 import './App.scss';
 import { ArticleCreate } from './features/article/ArticleCreate';
 import { ArticleEdit } from './features/article/ArticleEdit';
-import { ArticleList } from './features/article/ArticleList';
 import { ArticleView } from './features/article/ArticleView';
 import { Homepage } from './features/home/Homepage';
 
@@ -20,26 +19,25 @@ const App = () => {
   return (
     <div className="App">
       <header id="main-header">
-        <Link to="/">Rehlog</Link>
-      </header>
-      <div>
         <Container>
           <Row>
-            <Col md={4}>
-              <ArticleList />
+            <Col xss={2}>.</Col>
+            <Col xss={8}>
+              <Link to="/">Rehlog</Link>
             </Col>
-            <Col md={8}>
-              <main>
-                <Routes>
-                  <Route path="/" element={<Homepage />} />
-                  <Route path="/create" element={<ArticleCreate />} />
-                  <Route path=":slug" element={<ArticleView />} />
-                  <Route path=":slug/edit" element={<ArticleEdit />} />
-                </Routes>
-              </main>
-            </Col>
+            <Col xss={2}>.</Col>
           </Row>
         </Container>
+      </header>
+      <div>
+        <main>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/create" element={<ArticleCreate />} />
+            <Route path=":slug" element={<ArticleView />} />
+            <Route path=":slug/edit" element={<ArticleEdit />} />
+          </Routes>
+        </main>
         <footer id="main-footer">
           <p>© {currentYear} Rehan Mulakhel</p>
         </footer>

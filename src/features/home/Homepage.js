@@ -1,10 +1,13 @@
 import React from 'react';
 import './Homepage.scss';
+import { ArticleList } from '../article/ArticleList';
 
 export const Homepage = () => {
   return (
     <div id="homepage-container">
-      <h1>Bienvenue</h1>
+      <h1>Les articles les plus récents</h1>
+      <ArticleList />
+      <h1>FAQ</h1>
       <h2>Qui suis-je?</h2>
       <p>
         Je suis un développeur basé en Suisse. Je m&apos;intéresse à
